@@ -16,12 +16,29 @@ const marvelAPI = axios.create({
 });
 
 type getCharactersParams = {
-  queryKey: [string, { search?: string }];
+  filterBy?: string;
+  orderBy: string;
+  page: number;
+  searchParam?: string;
 };
 
-export const getCharacters = async (params: getCharactersParams) => {
-  const { data: { data: marvelData} } = await marvelAPI('/characters', {
-    params: { ...getAuthConfig() },
+export const getCharacters = async ({
+  orderBy,
+  page,
+  filterBy,
+  searchParam,
+}: getCharactersParams) => {
+  const params = {
+    ...getAuthConfig(),
+    offset: page * 20,
+    orderBy,
+    [filterBy]: searchParam,
+  };
+
+  const {
+    data: { data: marvelData },
+  } = await marvelAPI('/characters', {
+    params,
   });
 
   return marvelData;
