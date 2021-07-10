@@ -1,11 +1,12 @@
-import { Result } from 'pages/Characters/types';
+import React from 'react';
+
 import Card from 'components/Card';
 
-type CharactersListProps = {
-  results: Result[];
-};
+interface CharactersListProps {
+  results: CharactersResult[];
+}
 
-const CharactersList = ({ results }: CharactersListProps) => {
+const CharactersList: React.FC<CharactersListProps> = ({ results }) => {
   return (
     <>
       {results?.map(({ id, name, thumbnail }) => (

@@ -1,4 +1,4 @@
-import { FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 
 import { getCharacters } from 'adapters';
@@ -9,9 +9,7 @@ import Pagination from 'components/Pagination';
 import Spinner from 'components/Spinner';
 import { charactersOrder, filterOptions as options } from 'utils/config';
 
-import { Response } from './types';
-
-const Characters = () => {
+const Characters: React.FC = () => {
   const queryClient = useQueryClient();
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState(charactersOrder.nameAsc);
@@ -27,24 +25,25 @@ const Characters = () => {
       order: string,
       filterBy: string,
       searchParam: string
-    ): Promise<Response> =>
+    ): Promise<CharactersResponse> =>
       getCharacters({ page, orderBy: order, filterBy, searchParam }),
     []
   );
 
-  const { data, isLoading, isError, isPreviousData } = useQuery<Response>(
-    ['characters', page, order, filterOptions],
-    () =>
-      getCharactersResolver(
-        page,
-        order,
-        filterOptions.filterBy,
-        filterOptions.searchParam
-      ),
-    {
-      keepPreviousData: true,
-    }
-  );
+  const { data, isLoading, isError, isPreviousData } =
+    useQuery<CharactersResponse>(
+      ['characters', page, order, filterOptions],
+      () =>
+        getCharactersResolver(
+          page,
+          order,
+          filterOptions.filterBy,
+          filterOptions.searchParam
+        ),
+      {
+        keepPreviousData: true,
+      }
+    );
 
   const hasMore = useMemo(
     () => data?.offset + data?.limit < data?.total,

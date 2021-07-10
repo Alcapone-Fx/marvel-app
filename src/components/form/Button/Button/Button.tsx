@@ -1,18 +1,18 @@
 import { getButtonClassNameByDisabledCondition } from 'utils';
 
-type ButtonProps = {
+interface ButtonProps {
   isDisabled: boolean;
   label: string;
   onClick?: () => void;
   type?: 'primary' | 'submit';
-};
+}
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
   isDisabled,
   label,
   type = 'primary',
   onClick,
-}: ButtonProps) => (
+}) => (
   <button
     className={getButtonClassNameByDisabledCondition(isDisabled)}
     disabled={isDisabled}

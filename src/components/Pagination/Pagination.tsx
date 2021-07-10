@@ -1,7 +1,7 @@
 import Button from 'components/form/Button';
 import { scrollToTop } from 'utils';
 
-type PaginationProps = {
+interface PaginationProps {
   hasMore: boolean;
   isPreviousData: boolean;
   paginationState: {
@@ -10,13 +10,13 @@ type PaginationProps = {
       newPage: number | ((previousPage: number) => number)
     ) => void;
   };
-};
+}
 
-const Pagination = ({
+const Pagination: React.FC<PaginationProps> = ({
   hasMore,
   isPreviousData,
   paginationState: { currentPage, setCurrentPage },
-}: PaginationProps) => (
+}) => (
   <>
     <Button
       isDisabled={currentPage === 0}

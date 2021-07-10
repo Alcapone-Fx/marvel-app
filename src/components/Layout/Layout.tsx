@@ -2,7 +2,11 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import { paths } from 'utils/paths';
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
   const { push } = useHistory();
 
@@ -22,9 +26,7 @@ const Layout = ({ children }) => {
             >
               Characters
             </li>
-            <li className={getNavItemsClassName(paths.comics)}>
-              Comics
-            </li>
+            <li className={getNavItemsClassName(paths.comics)}>Comics</li>
             <li className={`mr-8 ${getNavItemsClassName(paths.stories)}`}>
               Stories
             </li>

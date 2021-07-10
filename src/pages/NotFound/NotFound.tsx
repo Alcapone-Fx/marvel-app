@@ -1,11 +1,3 @@
-import React from 'react'
+const NotFound: React.FC = () => <div>Return to main page</div>;
 
-const NotFound = () => {
-  return (
-    <div>
-      Return to main page
-    </div>
-  )
-}
-
-export default NotFound
+export default NotFound;

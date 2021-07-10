@@ -1,13 +1,13 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 import Button from '../Button';
 import RadioButton from '../Radio';
 
-type CharactersFormProps = {
+interface CharactersFormProps {
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
-};
+}
 
-const CharactersForm = ({ onSubmit }: CharactersFormProps) => {
+const CharactersForm: React.FC<CharactersFormProps> = ({ onSubmit }) => {
   const [isSearchFieldDisabled, setSearchFieldDisabled] = useState(true);
 
   const handleChange = ({

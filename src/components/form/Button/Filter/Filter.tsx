@@ -1,8 +1,8 @@
-type FilterProps = {
+interface FilterProps {
   onClick: () => void;
-};
+}
 
-const Filter = ({ onClick }: FilterProps) => (
+const Filter: React.FC<FilterProps> = ({ onClick }) => (
   <div className="h-6 w-6 cursor-pointer mr-4" onClick={onClick}>
     <svg
       xmlns="http://www.w3.org/2000/svg"

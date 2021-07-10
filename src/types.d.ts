@@ -1,4 +1,4 @@
-export type Result = {
+type CharactersResult = {
   comics: Object;
   description: string;
   events: Object;
@@ -12,10 +12,21 @@ export type Result = {
   urls: string[];
 };
 
-export type Response = {
+type CharactersResponse = {
   count: number;
   limit: number;
   offset: number;
   total: number;
-  results: Result[];
+  results: CharactersResult[];
+};
+
+type getComicsParams = {
+  page: number;
+};
+
+type getCharactersParams = {
+  filterBy?: string;
+  orderBy: string;
+  page: number;
+  searchParam?: string;
 };

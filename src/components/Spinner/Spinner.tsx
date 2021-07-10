@@ -1,5 +1,5 @@
 import './Spinner.css';
 
-const Spinner = () => <div className="loader" />;
+const Spinner: React.FC = () => <div className="loader" />;
 
 export default Spinner;

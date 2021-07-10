@@ -1,9 +1,9 @@
-type CardProps = {
+interface CardProps {
   imageUrl: string;
   title: string;
-};
+}
 
-const Card = ({ imageUrl, title }: CardProps) => (
+const Card: React.FC<CardProps> = ({ imageUrl, title }) => (
   <div className="w-48 shadow-lg">
     <div
       style={{

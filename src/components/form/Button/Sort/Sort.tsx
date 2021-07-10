@@ -1,12 +1,12 @@
 import { charactersOrder } from 'utils/config';
 
-type SortProps = {
+interface SortProps {
   order: string;
   onAscClick: () => void;
   onDescClick: () => void;
-};
+}
 
-const Sort = ({ order, onAscClick, onDescClick }: SortProps) => (
+const Sort: React.FC<SortProps> = ({ order, onAscClick, onDescClick }) => (
   <>
     <div
       className={`${
